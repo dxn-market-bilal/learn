@@ -5,7 +5,7 @@ const selectCity = document.getElementById('userCity');
 const messageText = document.getElementById('welcomeMessage');
 const spinner = document.getElementById('loadingSpinner');
 
-const scriptURL = 'رابط_غوغل_سكربت_مالتك_هنا';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyiDtaNjmpA7Q_qEVvAgKabvR9EWAmreLfv-P3LvcVlTSus0en1D8V0jUk5Nbhb4QHQxw/exec';
 
 button.addEventListener('click', function() {
     const name = inputName.value.trim();
