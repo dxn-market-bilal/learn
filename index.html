@@ -10,16 +10,21 @@
 <div class="card">
     <h1>أهلاً بك في عالم البرمجة الفخم! 😎</h1>
     <input type="text" id="userName" placeholder="اكتب اسمك هنا...">
-    <input type="text" id="userPhone" placeholder="اكتب رقم هاتفك هنا...">
+    <input type="text" id="userPhone" placeholder="اكتب رقم هاتفك (أرقام فقط)...">
+    
     <select id="userCity">
-    <option value="">اختر مدينتك...</option>
-    <option value="بغداد">بغداد</option>
-    <option value="الانبار">الأنبار</option>
-    <option value="البصرة">البصرة</option>
-    <option value="اربيل">أربيل</option>
-</select>
+        <option value="">اختر مدينتك...</option>
+        <option value="بغداد">بغداد</option>
+        <option value="الانبار">الأنبار</option>
+        <option value="البصرة">البصرة</option>
+        <option value="اربيل">أربيل</option>
+    </select>
+    
     <button id="myBtn">اضغط هنا</button>
-    <P id="welcomeMessage"></P>
+    
+    <p id="welcomeMessage"></p>
+    <!-- صندوق المؤشر المتحرك -->
+    <div class="spinner" id="loadingSpinner"></div>
 </div>
 <script src="app.js"></script>
 </body>
