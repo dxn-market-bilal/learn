@@ -1,36 +1,53 @@
 const button = document.getElementById('myBtn');
 const inputName = document.getElementById('userName');
 const inputPhone = document.getElementById('userPhone');
-const selectCity = document.getElementById('userCity'); // صيّحنا للقائمة المنسدلة
+const selectCity = document.getElementById('userCity');
 const messageText = document.getElementById('welcomeMessage');
+const spinner = document.getElementById('loadingSpinner');
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyiDtaNjmpA7Q_qEVvAgKabvR9EWAmreLfv-P3LvcVlTSus0en1D8V0jUk5Nbhb4QHQxw/exec';
+const scriptURL = 'رابط_غوغل_سكربت_مالتك_هنا';
 
 button.addEventListener('click', function() {
-    const name = inputName.value;
-    const phone = inputPhone.value;
-    const city = selectCity.value; // سحبنا الخيار اللّي اختاره المستخدم
+    const name = inputName.value.trim();
+    const phone = inputPhone.value.trim();
+    const city = selectCity.value;
 
-    // التأكد من إن كل الحقول ممتلئة والقائمة تم الاختيار منها
+    // 1. الفحص الأول: هل اكو حقول فارغة؟
     if (name === "" || phone === "" || city === "") {
-        messageText.innerText = "الرجاء ملء جميع الحقول واختيار المدينة! ⚠️";
-        messageText.style.color = "red";
-    } else {
-        messageText.innerText = "جاري إرسال بياناتك... ⏳";
-        messageText.style.color = "yellow";
-
-        // أضفنا المدينة &userCity بداخل رابط الإرسال
-        fetch(scriptURL + "?userName=" + encodeURIComponent(name) + "&userPhone=" + encodeURIComponent(phone) + "&userCity=" + encodeURIComponent(city), { method: 'POST' })
-        .then(response => {
-            messageText.innerText = "تم حفظ بياناتك واختيار مدينتك بنجاح! 😎🔥";
-            messageText.style.color = "#00ff88";
-            inputName.value = ""; 
-            inputPhone.value = ""; 
-            selectCity.value = ""; // إعادة القائمة للوضع الافتراضي
-        })
-        .catch(error => {
-            messageText.innerText = "عذراً، حدث خطأ في الاتصال! ❌";
-            messageText.style.color = "red";
-        });
+        showError("الرجاء ملء جميع الحقول واختيار المدينة! ⚠️");
+        return;
     }
+
+    // 2. الفحص الثاني: هل رقم الهاتف يحتوي على أحرف؟ (قانون الأرقام فقط)
+    if (isNaN(phone)) {
+        showError("رقم الهاتف يجب أن يحتوي على أرقام فقط! ❌");
+        return;
+    }
+
+    // إذا كلشي تمام، نبلش الإرسال ونشغل المؤشر
+    messageText.innerText = "جاري إرسال بياناتك وحفظها... ⏳";
+    messageText.style.color = "yellow";
+    spinner.style.display = "block";
+
+    fetch(scriptURL + "?userName=" + encodeURIComponent(name) + "&userPhone=" + encodeURIComponent(phone) + "&userCity=" + encodeURIComponent(city), { method: 'POST' })
+    .then(response => {
+        messageText.innerText = "تم حفظ بياناتك واختيار مدينتك بنجاح! 😎🔥";
+        messageText.style.color = "#00ff88";
+        spinner.style.display = "none";
+        
+        // تصفير الحقول
+        inputName.value = ""; 
+        inputPhone.value = ""; 
+        selectCity.value = ""; 
+    })
+    .catch(error => {
+        showError("عذراً، حدث خطأ في الاتصال بالسيرفر! ❌");
+    });
 });
+
+// دالة زغيرة لتسهيل إظهار الأخطاء واختصار الكود
+function showError(msg) {
+    messageText.innerText = msg;
+    messageText.style.color = "red";
+    spinner.style.display = "none";
+}
