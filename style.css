@@ -65,3 +65,16 @@ input:focus{
     font-size: 18px;
     font-weight: bold;
 }
+
+select {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #007bff;
+    background-color: #222240;
+    color: white;
+    outline: none;
+    margin: 15px 0;
+    width: 100%; /* علمود يأخذ نفس عرض الحقول اللّي فوگاه بالظبط */
+    cursor: pointer;
+}
