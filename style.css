@@ -1,0 +1,67 @@
+body {
+    background-color: #1a1a2e; /* لون خلفية داكن وفخم */
+    color: #ffffff; /* لون كتابة أبيض صافي */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* نوع خط مرتب */
+    text-align: center; /* يخلي كل العناصر تجي بالسنتر */
+    padding-top: 100px; /* مسافة أمان من فوق علمود ينزل النص */
+
+}
+
+.card {
+    background-color: #252542;
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 450px;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba( 0, 0, 0, 0.4);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    direction: rtl;
+}
+
+button {
+    background-color: darkred; /* لون الزر أزرق احترافي */
+    color: white; /* كتابة بداخل الزر باللون الأبيض */
+    border: none; /* إزالة الحواف المزعجة الافتراضية */
+    padding: 12px 28px; /* تكبير حجم الزر (مسافة داخلية) */
+    font-size: 18px; /* حجم الخط بداخل الزر */
+    border-radius: 25px; /* حواف دائرية فخمة */
+    cursor: pointer; /* يخلي الماوس يتحول لشكل إيد من توقف عليه */
+    margin-top: 20px; /* مسافة بين الزر والعنوان الفوقاه */
+    transition: 0.3s;
+}
+
+input{
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #007bff;
+    background-color: #222240;
+    color: white;
+    outline: none;
+    margin: 15px 0;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #b30000;
+    transform: scale(1.05);
+}
+
+input:focus{
+    border-color: #00ff88;
+    background-color: #2a2a4e;
+}
+
+.card h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #00ff88;
+}
+
+#welcomeMessage {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
